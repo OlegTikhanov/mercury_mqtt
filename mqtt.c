@@ -5,7 +5,7 @@
 #include "mqtt.h"
 #include <unistd.h>
 
-void mosq_log_callback(struct mosquitto *mosq, void *userdata, int level, const char *str)
+static void mosq_log_callback(struct mosquitto *mosq, void *userdata, int level, const char *str)
 {
 
     switch (level)
@@ -16,13 +16,11 @@ void mosq_log_callback(struct mosquitto *mosq, void *userdata, int level, const 
     case MOSQ_LOG_WARNING:
         break;
     case MOSQ_LOG_ERR:
-    {
         printf("%i:%s\n", level, str);
-    }
     }
 }
 
-void connect_callback(struct mosquitto *mosq, void *obj, int rc)
+static void connect_callback(struct mosquitto *mosq, void *obj, int rc)
 {
 #if DEBUG > 0
     printf("MQTT connect sucsess\n");
