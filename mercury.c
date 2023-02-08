@@ -5,6 +5,7 @@
 #include <unistd.h>
 #include <string.h>
 #include <time.h>
+#include "settings.h"
 
 int fd;
 static int openPort(char *port)
@@ -165,7 +166,7 @@ static int readData(uint32_t dev_addr, uint8_t *buffer)
 
 static int get(uint32_t address, uint8_t command, uint8_t *buffer)
 {
-    if (openPort("/dev/ttyUSB0") < 0)
+    if (openPort(MERCURY_PORT) < 0)
     {
 #if DEBUG > 0
         printf("Ошибка открытия порта.\n");
@@ -173,7 +174,7 @@ static int get(uint32_t address, uint8_t command, uint8_t *buffer)
         uint32_t timeout = OPEN_PORT_TIMEOUT * (CLOCKS_PER_SEC / 1000);
         clock_t ticks = clock();
         int open;
-        while (((open = openPort("/dev/ttyUSB0")) < 0) && (clock() - ticks < timeout))
+        while (((open = openPort(MERCURY_PORT)) < 0) && (clock() - ticks < timeout))
             ;
         if (open < 0)
             return -1;
