@@ -1,0 +1,14 @@
+[Unit]
+Description=Mercury_counter
+After=network.target
+
+[Service]
+Type=simple
+User=root
+Group=root
+Restart=always
+ExecStart=/usr/local/bin/mercury
+TimeoutSec=20
+
+[Install]
+WantedBy=multi-user.target
