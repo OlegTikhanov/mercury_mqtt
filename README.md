@@ -3,8 +3,8 @@
 Передаёт счётчики тарифов и текущую потребляемую мощность.\
 Для работы необходим rs485 преобразователь.
 ## Установка зависимостей.
-    $ sudo apt update\
-    $ sudo apt install mosquitto-dev gcc make\
+    $ sudo apt update
+    $ sudo apt install mosquitto-dev libmosquitto-dev gcc make
 
 ## Настройка параметров.
 ### Исправить порт преобразователя на свой.
