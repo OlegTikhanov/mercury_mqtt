@@ -1,12 +1,14 @@
 [Unit]
 Description=Mercury_counter
-After=network.target
+Requires=network-online.target
+
 
 [Service]
 Type=simple
 User=root
 Group=root
 Restart=always
+RestartSec=30
 ExecStart=/usr/local/bin/mercury
 TimeoutSec=20
 
